@@ -1,0 +1,38 @@
+version: '2'
+services:
+  jenkins:
+    image: jenkins:latest
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    networks:
+      - jenkins
+    volumes:
+      - /var/jenkins_home:/var/jenkins_home
+  postgres:
+    image: postgres:9.6
+    networks:
+      - jenkins
+    environment:
+      POSTGRES_USER: sonar
+      POSTGRES_PASSWORD: sonarpasswd
+    volumes:
+      - /var/postgres-data:/var/lib/postgresql/data
+  sonarqube:
+    image: sonarqube:lts
+    ports:
+      - "9000:9000"
+      - "9092:9092"
+    networks:
+      - jenkins
+    environment:
+      SONARQUBE_JDBC_USERNAME: sonar
+      SONARQUBE_JDBC_PASSWORD: sonarpasswd
+      SONARQUBE_JDBC_URL: "jdbc:postgresql://postgres:5432/sonar"
+    depends_on: 
+      - postgres
+
+networks:
+  jenkins:
+
+
