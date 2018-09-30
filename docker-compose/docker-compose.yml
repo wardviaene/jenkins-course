@@ -1,7 +1,7 @@
 version: '2'
 services:
   jenkins:
-    image: jenkins:latest
+    image: jenkins/jenkins:lts
     ports:
       - "8080:8080"
       - "50000:50000"
