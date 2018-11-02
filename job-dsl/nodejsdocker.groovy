@@ -10,9 +10,9 @@ job('NodeJS Docker example') {
     }
     steps {
         dockerBuildAndPublish {
-            repositoryName('bibekmantree/helloworldnodejs')
+            repositoryName('bibekmantree/helloworldnodejs') // Enter your dockerhub repository
             tag('${GIT_REVISION,length=9}')
-            registryCredentials('dockerhub')
+            registryCredentials('dockerhub') // Create a credential in jenkins with id dockerhub
             forcePull(false)
             forceTag(false)
             createFingerprints(false)
