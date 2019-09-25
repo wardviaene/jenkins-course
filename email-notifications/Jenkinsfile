@@ -30,7 +30,7 @@ node {
          to: to, attachLog: true )
     }
 
-    // mark current build as a failure and throw the error
+    // mark current build as a failure and throw the error :
     throw e;
   }
 }
