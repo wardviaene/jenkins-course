@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk
+FROM openjdk:14-jdk
 
 # install git, curl, openssh server, and remove host keys
 RUN apt-get update && apt-get install -y --no-install-recommends git curl openssh-server && mkdir /var/run/sshd && rm -rf /var/lib/apt/lists/* && rm -rf /etc/ssh/ssh_host_*
