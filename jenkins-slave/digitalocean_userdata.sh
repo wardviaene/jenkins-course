@@ -1,9 +1,28 @@
 #!/bin/bash
-apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
+
+# install dependencies
+apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+
+# get gpg key
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+
+# add docker repo
+add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+
+# update repository
 apt-get update
-apt-get install -y docker-engine
+apt-get install -y docker-ce docker-ce-cli containerd.io
 systemctl enable docker
+
+# jenkins setup
 mkdir -p /var/jenkins_home/.ssh
 cp /root/.ssh/authorized_keys /var/jenkins_home/.ssh/authorized_keys
 chmod 700 /var/jenkins_home/.ssh
