@@ -1,3 +1,4 @@
+####test
 job('NodeJS example') {
     scm {
         git('https://github.com/biswa123642/jenkins-docker.git') {  node -> // is hudson.plugins.git.GitSCM
