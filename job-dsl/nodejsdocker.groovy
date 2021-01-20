@@ -6,7 +6,7 @@ job('Groovy-edit2') {
         }
     }
     triggers {
-        scm('H/5 * * * *')
+        scm('*H/1 * * * *')
     }
     wrappers {
         nodejs('nodejs') // this is the name of the NodeJS installation in 
@@ -15,7 +15,7 @@ job('Groovy-edit2') {
     steps {
         dockerBuildAndPublish {
             repositoryName('csenguttuvan/nodejs')
-            tag('${GIT_REVISION,length=9}')
+            tag('')
             registryCredentials('dockerhub')
             forcePull(false)
             forceTag(false)
