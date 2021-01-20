@@ -1,8 +1,8 @@
-job('NodeJS Docker example') {
+job('Groovy-edit2') {
     scm {
-        git('git://github.com/wardviaene/docker-demo.git') {  node -> // is hudson.plugins.git.GitSCM
-            node / gitConfigName('DSL User')
-            node / gitConfigEmail('jenkins-dsl@newtech.academy')
+        git('git://github.com/csenguttuvan/docker-demo.git') {  node -> // is hudson.plugins.git.GitSCM
+            node / gitConfigName('csenguttuvan)
+            node / gitConfigEmail('chris.senguttuvan@kaltura.com')
         }
     }
     triggers {
@@ -14,7 +14,7 @@ job('NodeJS Docker example') {
     }
     steps {
         dockerBuildAndPublish {
-            repositoryName('wardviaene/docker-nodejs-demo')
+            repositoryName('csenguttuvan/nodejs')
             tag('${GIT_REVISION,length=9}')
             registryCredentials('dockerhub')
             forcePull(false)
