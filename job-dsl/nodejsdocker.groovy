@@ -1,7 +1,7 @@
 job('Groovy-edit2') {
     scm {
         git('git://github.com/csenguttuvan/docker-demo.git') {  node -> // is hudson.plugins.git.GitSCM
-            node / gitConfigName('csenguttuvan)
+            node / gitConfigName('csenguttuvan')
             node / gitConfigEmail('chris.senguttuvan@kaltura.com')
         }
     }
