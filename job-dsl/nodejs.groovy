@@ -16,3 +16,4 @@ job('Groovy-edit1') {
         shell("npm install")
     }
 }
+
