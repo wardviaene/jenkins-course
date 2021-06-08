@@ -2,7 +2,13 @@
 
 # this script is only tested on ubuntu xenial
 
+# update system
+
+sudo apt-get update && sudo apt-get upgrade -y
+
 # install docker
+
+sudo apt-get remove docker docker-engine docker.io containerd runc # Uninstall old versions
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
