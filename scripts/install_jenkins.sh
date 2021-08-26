@@ -2,14 +2,20 @@
 
 # this script is only tested on ubuntu xenial
 
+# update system
+
+sudo apt-get update && sudo apt-get upgrade -y
+
 # install docker
+
+sudo apt-get remove docker docker-engine docker.io containerd runc # Uninstall old versions
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
 apt-get update
-apt-get install docker-ce docker-ce-cli containerd.io
+apt-get install docker-ce docker-ce-cli containerd.io -y
 systemctl enable docker
 systemctl start docker
 usermod -aG docker ubuntu
@@ -21,4 +27,4 @@ docker run -p 8080:8080 -p 50000:50000 -v /var/jenkins_home:/var/jenkins_home -d
 
 # show endpoint
 echo 'Jenkins installed'
-echo 'You should now be able to access jenkins at: http://'$(curl -s ifconfig.co)':8080'
+echo 'You should now be able to access jenkins at: http://'$(curl icanhazip.com)':8080'
