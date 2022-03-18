@@ -7,13 +7,13 @@ node {
     }
 
     stage('build') {
-        agent {
-          docker {
-            args "-u root"
-            alwaysPull false
-            reuseNode true
-          }
-        }        
+      agent {
+        docker {
+          args "-u root"
+          alwaysPull false
+          reuseNode true
+        }
+      }        
       myGradleContainer.inside("-v ${env.HOME}/.gradle:/home/gradle/.gradle") {
         sh 'cd complete && /opt/gradle/bin/gradle build'
       }
