@@ -11,7 +11,8 @@ pipeline {
     
     stage('prep') {
         git url: 'https://github.com/wardviaene/gs-gradle.git'
-        def myGradleContainer = docker.image('gradle:jdk8-alpine')
+        
+        myGradleContainer = docker.image('gradle:jdk8-alpine')
         myGradleContainer.pull()
     }
 
