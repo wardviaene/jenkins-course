@@ -27,4 +27,4 @@ docker run -p 8080:8080 -p 50000:50000 -v /var/jenkins_home:/var/jenkins_home -d
 
 # show endpoint
 echo 'Jenkins installed'
-echo 'You should now be able to access jenkins at: http://'$(curl -s ifconfig.co)':8080'
+echo 'You should now be able to access jenkins at: http://'$(curl -4 -s ifconfig.co)':8080'
