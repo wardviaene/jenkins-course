@@ -1,4 +1,4 @@
-job('NodeJS Docker example') {
+job('NodeJS Docker example dsl') {
     scm {
         git('https://github.com/wardviaene/docker-demo.git') {  node -> // is hudson.plugins.git.GitSCM
             node / gitConfigName('DSL User')
@@ -8,15 +8,11 @@ job('NodeJS Docker example') {
     triggers {
         scm('H/5 * * * *')
     }
-    wrappers {
-        nodejs('nodejs') // this is the name of the NodeJS installation in 
-                         // Manage Jenkins -> Configure Tools -> NodeJS Installations -> Name
-    }
     steps {
         dockerBuildAndPublish {
-            repositoryName('wardviaene/docker-nodejs-demo')
+            repositoryName('pyrosandro/docker-nodejs-demo-dsl')
             tag('${GIT_REVISION,length=9}')
-            registryCredentials('dockerhub')
+            registryCredentials('pyrosandro-dockerhub')
             forcePull(false)
             forceTag(false)
             createFingerprints(false)
